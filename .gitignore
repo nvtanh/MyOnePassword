@@ -11,3 +11,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+/.bundle
+/vendor/bundle
+/vendor/assets
+Gemfile.lock
+/db/schema.rb
