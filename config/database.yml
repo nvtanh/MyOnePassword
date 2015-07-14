@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: MyOnePassword
+
+test:
+  <<: *default
+  database: MyOnePassword_test
+
+production:
+  <<: *default
+  database: MyOnePassword_production
