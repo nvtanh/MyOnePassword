@@ -1,0 +1,29 @@
+.row
+  .col-lg-12
+    %h1.page-header
+      = t ".title"
+
+.row{style: "padding-bottom: 10px;"}
+  .col-md-12
+    .row
+      .col-md-2
+        = link_to t(".new"), new_dashboard_account_path, class: "btn btn-block btn-primary"
+
+.row
+  .col-lg-12
+    %table.table.table-striped.table-bordered.table-hover
+      %thead
+        %tr
+          %th
+            = Account.h :title
+          %th
+            = t ".option_label"
+      %tbody
+        - @accounts.each do |account|
+          %tr
+            %td
+              = link_to account.title, dashboard_account_path(account.id)
+            %td
+              = link_to t(".edit"), edit_dashboard_account_path(account.id)
+              = link_to t(".delete"), dashboard_account_path(account.id), method: :delete,
+                data: {confirm: t("label.question_destroy")}

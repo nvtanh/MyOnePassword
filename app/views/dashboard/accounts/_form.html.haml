@@ -1,0 +1,36 @@
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-body
+        .table-responsive
+          = form_for [:dashboard, @account] do |f|
+            = render "shared/error_messages", object: f.object
+            %table.table.table-striped
+              %tr
+                %th
+                  = Account.h :title
+                %td
+                  = f.text_field :title, class: "form-control"
+
+              %tr
+                %th
+                  = Account.h :username
+                %td
+                  = f.text_field :username, class: "form-control"
+
+              %tr
+                %th
+                  = Account.h :password
+                %td
+                  = f.password_field :password, value: @account.password, class: "form-control"
+
+              %tr
+                %th
+                  = Account.h :site_url
+                %td
+                  = f.text_field :site_url, class: "form-control"
+
+              %tr
+                %td{colspan: 2}
+                  = f.submit t(".submit"), class: "btn btn-primary"
+                  = link_to t(".cancel"), dashboard_accounts_path , class: "btn btn-default"

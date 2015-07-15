@@ -21,3 +21,6 @@
 
 en:
   hello: "Hello world"
+
+  label:
+    question_destroy: "Are you sure?"
