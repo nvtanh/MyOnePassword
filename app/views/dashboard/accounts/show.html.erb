@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-lg-12">
+    <h1 class="page-header">
+      <%= t(".title", name: @account.title) %>
+    </h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= t ".heading" %>
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <tr>
+              <th>
+                <%= Account.h :username %>
+              </th>
+              <td>
+                <%= @account.username %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= Account.h :password %>
+              </th>
+              <td>
+                <%= password_field_tag :password, @account.password, readonly: true, class: "showpassword", id: "password" %>
+                <%= button_tag "Show Password", class: "btn btn-sm" %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <%= Account.h :site_url %>
+              </th>
+              <td>
+                <%= @account.site_url %>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">
+                <%= link_to t(".back"), dashboard_accounts_path, class: "btn btn-primary" %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= javascript_tag do %>
+  $(function () {
+    $(".showpassword").each(function (index, input) {
+      var $input = $(input);
+      console.log($input);
+      console.log(index);
+      $("button").click(function () {
+        var change = "";
+        if ($(this).html() === "Show Password") {
+          $(this).html("Hide Password")
+          change = "text";
+        } else {
+          $(this).html("Show Password");
+          change = "password";
+        }
+        var rep = $("<input type='" + change + "' />")
+          .attr("id", $input.attr("id"))
+          .attr("name", $input.attr("name"))
+          .attr('class', $input.attr('class'))
+          .val($input.val())
+          .insertBefore($input);
+        $input.remove();
+        $input = rep;
+      }).insertAfter($input);
+    });
+  });
+<% end %>

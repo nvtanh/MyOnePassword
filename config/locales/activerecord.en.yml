@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+      account: "Account"
+
+    attributes:
+      account:
+        title: "title"
+        username: "username"
+        password: "password"
+        site_url: "site url"

@@ -1,0 +1,8 @@
+en:
+  dashboard:
+    accounts:
+      index:
+        option_label: "Option"
+      form:
+        submit: "Submit"
+        cancel: "Cancel"
